@@ -1,20 +1,23 @@
 ---
 sidebar_position: 2
 ---
-# register
+# logout
 # 描述
-注册账户
+
+登出
+
+**!!\[饼干需要\]!!**
+
 
 | 请求地址 | 请求方式 |
 | --- | --- |
-| /account/register | GET |
+| /account/logout | GET |
 
 
 |参数|类型|描述|
 |---|---|---|
-|user_id|String|用户ID|
-|password|String|密码|
-|username|String|用户名|
+|auth_data|\[Cookie\]String|存在\[饼干\]里面的数据|
+
 
 |返回参数|类型|描述|
 |---|---|---|

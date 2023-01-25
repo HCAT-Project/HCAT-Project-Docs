@@ -1,20 +1,24 @@
 ---
 sidebar_position: 2
 ---
-# register
+# change_password
 # 描述
-注册账户
+
+改密码
+
+**!!\[饼干需要\]!!**
+
 
 | 请求地址 | 请求方式 |
 | --- | --- |
-| /account/register | GET |
+| /account/change_password | GET |
 
 
 |参数|类型|描述|
 |---|---|---|
-|user_id|String|用户ID|
-|password|String|密码|
-|username|String|用户名|
+|password|String|新密码|
+|auth_data|\[Cookie\]String|存在\[饼干\]里面的数据|
+
 
 |返回参数|类型|描述|
 |---|---|---|
