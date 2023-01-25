@@ -1,25 +1,21 @@
 ---
 sidebar_position: 2
 ---
-# logout
+# login
 # 描述
-
-登出
-
-**!!\[饼干需要\]!!**
-
+登录账户
 
 | 请求地址 | 请求方式 |
 | --- | --- |
-| /account/logout | GET |
+| /api/account/login | GET |
 
 
 |参数|类型|描述|
 |---|---|---|
-|auth_data|\[Cookie\]String|存在\[饼干\]里面的数据|
+|user_id|String|用户ID|
+|password|String|密码|
 
-
-|返回参数|类型|描述|
+|返回参数|类型|
 |---|---|---|
 |message|String|返回的信息|
 |status|String|状态|

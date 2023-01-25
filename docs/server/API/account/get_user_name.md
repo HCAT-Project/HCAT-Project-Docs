@@ -1,22 +1,25 @@
 ---
 sidebar_position: 2
 ---
-# register
+# get_user_name
 # 描述
-注册账户
+
+获取用户名
+
 
 | 请求地址 | 请求方式 |
 | --- | --- |
-| /account/register | GET |
+| /api/account/get_user_name | GET |
 
 
 |参数|类型|描述|
 |---|---|---|
-|user_id|String|用户ID|
-|password|String|密码|
-|username|String|用户名|
+|user_id|String|用户名|
+|auth_data|\[Cookie\]String|存在\[饼干\]里面的数据|
+
 
 |返回参数|类型|描述|
 |---|---|---|
+|data|String|用户名|
 |message|String|返回的信息|
 |status|String|状态|

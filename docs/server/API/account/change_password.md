@@ -1,25 +1,26 @@
 ---
 sidebar_position: 2
 ---
-# get_user_name
+# change_password
 # 描述
 
-获取用户名
+改密码
+
+**!!\[饼干需要\]!!**
 
 
 | 请求地址 | 请求方式 |
 | --- | --- |
-| /account/get_user_name | GET |
+| /api/account/change_password | GET |
 
 
 |参数|类型|描述|
 |---|---|---|
-|user_id|String|用户名|
+|password|String|新密码|
 |auth_data|\[Cookie\]String|存在\[饼干\]里面的数据|
 
 
 |返回参数|类型|描述|
 |---|---|---|
-|data|String|用户名|
 |message|String|返回的信息|
 |status|String|状态|
