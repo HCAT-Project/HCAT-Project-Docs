@@ -5,13 +5,13 @@ sidebar_position: 2
 # 描述
 获得群聊群主
 
-
+**!!\[饼干需要\]!!**
 
 
 | 请求地址 | 请求方式 |
 | --- | --- |
 | /api/group/get_group_owner | GET |
-
+|auth_data|\[Cookie\]String|存在\[饼干\]里面的数据|
 
 |参数|类型|描述|
 |---|---|---|
