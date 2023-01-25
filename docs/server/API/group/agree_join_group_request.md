@@ -1,20 +1,20 @@
 ---
 sidebar_position: 2
 ---
-# get_friend_nick
+# agree_join_group_request
 # 描述
-获取好友备注
+同意进群申请
 
 **!!\[饼干需要\]!!**
 
 | 请求地址 | 请求方式 |
 | --- | --- |
-| /api/friend/get_friend_nick | GET |
+| /api/group/agree_join_group_request | GET |
 
 
 |参数|类型|描述|
 |---|---|---|
-|friend_id|String|好友ID|
+|rid|String|请求ID|
 |auth_data|\[Cookie\]String|存在\[饼干\]里面的数据|
 
 |返回参数|类型|

@@ -1,3 +1,4 @@
+import os
 api = input("输入api:")
 father = input("father:")
 with open(api + ".md", 'w',encoding="UTF-8") as f:
@@ -40,6 +41,8 @@ sidebar_position: 2
             leixing="Int"
         elif leixing== 'l':
             leixing="List"
+        elif leixing == "j":
+            leixing="Json"
         else:
             leixing=leixing
         miaoshu=input("描述")
@@ -47,7 +50,7 @@ sidebar_position: 2
 
     f.write("""
 |返回参数|类型|
-|---|---|---|""")
+|---|---|---|\n""")
     l2=input("老两样？(y/n)")
     while True:
         canshu = input("参数")
@@ -64,7 +67,13 @@ sidebar_position: 2
             leixing = "Int"
         elif leixing == 'l':
             leixing = "List"
+        elif leixing == "j":
+            leixing="Json"
         else:
             leixing = leixing
         miaoshu = input("描述")
         f.write(f"|{canshu}|{leixing}|{miaoshu}|\n")
+    f.close()
+os.system(f"copy {api}.md {father}")
+os.system(f"del {api}.md")
+

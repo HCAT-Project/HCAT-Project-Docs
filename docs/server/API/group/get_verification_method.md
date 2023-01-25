@@ -1,23 +1,24 @@
 ---
 sidebar_position: 2
 ---
-# get_friend_nick
+# get_verification_method
 # 描述
-获取好友备注
+获取群聊验证情况
 
 **!!\[饼干需要\]!!**
 
 | 请求地址 | 请求方式 |
 | --- | --- |
-| /api/friend/get_friend_nick | GET |
+| /api/group/get_verification_method | GET |
 
 
 |参数|类型|描述|
 |---|---|---|
-|friend_id|String|好友ID|
+|group_id|String|群聊ID|
 |auth_data|\[Cookie\]String|存在\[饼干\]里面的数据|
 
 |返回参数|类型|
 |---|---|---|
+|data|Json|群聊验证消息|
 |message|String|返回的信息|
 |status|String|状态|

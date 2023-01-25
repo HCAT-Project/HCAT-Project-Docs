@@ -1,23 +1,24 @@
 ---
 sidebar_position: 2
 ---
-# get_friend_nick
+# get_permission
 # 描述
-获取好友备注
+获取自己在群中的权限
 
 **!!\[饼干需要\]!!**
 
 | 请求地址 | 请求方式 |
 | --- | --- |
-| /api/friend/get_friend_nick | GET |
+| /api/group/get_permission | GET |
 
 
 |参数|类型|描述|
 |---|---|---|
-|friend_id|String|好友ID|
+|group_id|String|群聊ID|
 |auth_data|\[Cookie\]String|存在\[饼干\]里面的数据|
 
 |返回参数|类型|
 |---|---|---|
+|data|String|你的权限|
 |message|String|返回的信息|
 |status|String|状态|
