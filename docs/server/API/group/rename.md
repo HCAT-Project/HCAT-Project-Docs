@@ -1,7 +1,7 @@
 ---
 sidebar_position: 2
 ---
-# group_rename
+# rename
 # 描述
 重命名群聊
 
@@ -9,7 +9,7 @@ sidebar_position: 2
 
 | 请求地址 | 请求方式 |
 | --- | --- |
-| /api/group/group_rename | GET |
+| /api/group/rename | GET |
 
 
 |参数|类型|描述|
