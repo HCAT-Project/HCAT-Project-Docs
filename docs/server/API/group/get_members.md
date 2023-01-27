@@ -1,15 +1,16 @@
 ---
 sidebar_position: 2
 ---
-# get_group_setting
+# get_members
 # 描述
-获取群聊设置
+获取群员列表
 
 **!!\[饼干需要\]!!**
 
+
 | 请求地址 | 请求方式 |
 | --- | --- |
-| /api/group/get_group_setting | GET |
+| /api/group/get_members | GET |
 
 
 |参数|类型|描述|
@@ -19,6 +20,6 @@ sidebar_position: 2
 
 |返回参数|类型|描述|
 |---|---|---|
-|data|Json|获取的群设置|
+|data|Json|返回群员信息|
 |message|String|返回的信息|
 |status|String|状态|
