@@ -18,7 +18,7 @@ sidebar_position: 2
 |admin_id|String|管理员ID|
 |auth_data|\[Cookie\]String|存在\[饼干\]里面的数据|
 
-|返回参数|类型|
+|返回参数|类型|描述|
 |---|---|---|
 |message|String|返回的信息|
 |status|String|状态|

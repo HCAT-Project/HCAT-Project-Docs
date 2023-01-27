@@ -18,9 +18,9 @@ sidebar_position: 2
 |group_id|String|群聊ID|
 
 
-|返回参数|类型|
+|返回参数|类型|描述|
 |---|---|---|
 |group_name|String|群聊名|
-|remark|String|评论(?)|
+|remark|String|备注|
 |message|String|返回的信息|
 |status|String|状态|

@@ -16,7 +16,7 @@ sidebar_position: 2
 |---|---|---|
 |auth_data|\[Cookie\]String|存在\[饼干\]里面的数据|
 
-|返回参数|类型|
+|返回参数|类型|描述|
 |---|---|---|
 |data|List|好友列表|
 |message|String|返回的信息|

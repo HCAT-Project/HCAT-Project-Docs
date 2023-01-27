@@ -18,7 +18,7 @@ sidebar_position: 2
 |group_id|String|群聊ID|
 
 
-|返回参数|类型|
+|返回参数|类型|描述|
 |---|---|---|
 |data|String|群主ID|
 |message|String|返回的信息|

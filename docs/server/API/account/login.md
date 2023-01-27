@@ -15,7 +15,7 @@ sidebar_position: 2
 |user_id|String|用户ID|
 |password|String|密码|
 
-|返回参数|类型|
+|返回参数|类型|描述|
 |---|---|---|
 |message|String|返回的信息|
 |status|String|状态|
