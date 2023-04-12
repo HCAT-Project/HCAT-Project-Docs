@@ -33,6 +33,7 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          routeBasePath:"./docs/API",
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
@@ -67,13 +68,7 @@ const config = {
             type: 'doc',
             docId: 'intro',
             position: 'left',
-            label: 'API文档',
-          },
-          {
-            type: 'doc',
-            docId: 'intro1',
-            position: 'left',
-            label: 'API文档',
+            label: '文档',
           },
           {to: '/blog', label: '也许是开发日志？', position: 'left'},
           {
