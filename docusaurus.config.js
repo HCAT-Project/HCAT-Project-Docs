@@ -67,7 +67,13 @@ const config = {
             type: 'doc',
             docId: 'intro',
             position: 'left',
-            label: '文档',
+            label: 'API文档',
+          },
+          {
+            type: 'doc',
+            docId: 'intro1',
+            position: 'left',
+            label: 'API文档',
           },
           {to: '/blog', label: '也许是开发日志？', position: 'left'},
           {
