@@ -1,5 +1,5 @@
 ---
-slug: 勉强能用(?)
+slug: 勉强能用（？）
 title: HCAT 4.3 更新进展
 authors: [natsumi]
 tags: [log]
