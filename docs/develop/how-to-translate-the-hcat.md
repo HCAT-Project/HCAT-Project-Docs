@@ -1,3 +1,6 @@
+---
+title: 翻译指南【EN-US】
+---
 # What is a `po` file?
 A `po` file is a file format for software localization defined by the GNU gettext tool. Gettext is an open-source tool designed to simplify the localization process by allowing you to extract translatable strings from your source code into a `po` file for translation. The `po` file contains a list of key-value pairs that define how string keys map to their translations for the target language.
 
