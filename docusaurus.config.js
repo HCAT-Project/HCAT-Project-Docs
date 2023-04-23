@@ -61,6 +61,14 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      giscus: {
+        repo: 'HCAT-Project/HCAT-Project-Docs',
+        repoId: 'R_kgDOI1nrdg',
+        category: 'chat',
+        categoryId: 'DIC_kwDOI1nrds4CV-8L',
+        theme: 'light_high_contrast',
+        darkTheme: 'dark_tritanopia'
+      },
       // Replace with your project's social card
       // image: 'img/docusaurus-social-card.jpg',
       navbar: {
@@ -140,6 +148,6 @@ const config = {
       },
     }
     ),
+    clientModules: [require.resolve('./src/clientModules/routeModules.ts')]
 };
-
 module.exports = config;
