@@ -1,7 +1,7 @@
 ---
 slug: 勉强能用(?)
 title: HCAT 4.3 更新进展
-authors: [hsn8086]
+authors: [natsumi]
 tags: [log]
 ---
 
