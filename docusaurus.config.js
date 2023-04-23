@@ -90,6 +90,11 @@ const config = {
           },
           {to: '/blog', label: '开发日志', position: 'left'},
           {
+            href: 'https://www.hcat.online/',
+            label: 'Home',
+            position: 'right',
+          },
+          {
             href: 'https://github.com/HCAT-Project',
             label: 'GitHub',
             position: 'right',
