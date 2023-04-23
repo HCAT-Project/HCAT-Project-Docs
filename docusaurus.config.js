@@ -8,16 +8,21 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'H-CAT Docs',
   tagline: '致力于成为真正小而美的在线网页聊天程序',
-  url: 'https://docs.hcat.online',
-  baseUrl: '/',
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
   favicon: 'img/hcat.png',
+
+  // Set the production url of your site here
+  url: 'https://docs.hcat.online',
+  // Set the /<baseUrl>/ pathname under which your site is served
+  // For GitHub pages deployment, it is often '/<projectName>/'
+  baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'HCAT-Project', // Usually your GitHub org/user name.
   projectName: 'HCAT-Project-docs', // Usually your repo name.
+
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'warn',
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
@@ -56,6 +61,8 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      // Replace with your project's social card
+      // image: 'img/docusaurus-social-card.jpg',
       navbar: {
         title: 'HCAT',
         logo: {
@@ -64,12 +71,24 @@ const config = {
         },
         items: [
           {
-            type: 'doc',
-            docId: 'intro',
+            type: 'docSidebar',  // docSidebar
             position: 'left',
-            label: '文档',
+            sidebarId: 'server', // foldername
+            label: '服务端文档',     // navbar title
           },
-          {to: '/blog', label: '也许是开发日志？', position: 'left'},
+          {
+            type: 'docSidebar',  // docSidebar
+            position: 'left',
+            sidebarId: 'develop', // foldername
+            label: '开发文档',     // navbar title
+          },
+          {
+            type: 'docSidebar',  // docSidebar
+            position: 'left',
+            sidebarId: 'api', // foldername
+            label: 'API文档',     // navbar title
+          },
+          {to: '/blog', label: 'Blog', position: 'left'},
           {
             href: 'https://github.com/HCAT-Project',
             label: 'GitHub',
@@ -114,7 +133,8 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
-    }),
+    }
+    ),
 };
 
 module.exports = config;
