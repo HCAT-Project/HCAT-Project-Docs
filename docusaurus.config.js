@@ -88,7 +88,7 @@ const config = {
             sidebarId: 'api', // foldername
             label: 'API文档',     // navbar title
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          {to: '/blog', label: '开发日志', position: 'left'},
           {
             href: 'https://github.com/HCAT-Project',
             label: 'GitHub',
@@ -121,7 +121,7 @@ const config = {
             title: '更多',
             items: [
               {
-                label: '开发博客？',
+                label: '开发日志',
                 to: '/blog',
               },
             ],
