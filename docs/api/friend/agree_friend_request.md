@@ -1,7 +1,7 @@
 ---
 sidebar_position: 2
 ---
-# agree_friend_require
+# agree_friend_request
 # 描述
 同意好友请求
 
@@ -9,7 +9,7 @@ sidebar_position: 2
 
 | 请求地址 | 请求方式 |
 | --- | --- |
-| /api/friend/agree_friend_require | GET |
+| /api/friend/agree_friend_request | GET |
 
 
 |参数|类型|描述|
