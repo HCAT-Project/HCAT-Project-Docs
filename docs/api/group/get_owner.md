@@ -10,7 +10,7 @@ sidebar_position: 2
 
 | 请求地址 | 请求方式 |
 | --- | --- |
-| /api/group/get_owner | GET |
+| /api/group/get_owner | GET/POST |
 |auth_data|\[Cookie\]String|存在\[饼干\]里面的数据|
 
 |参数|类型|描述|

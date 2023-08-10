@@ -9,7 +9,7 @@ sidebar_position: 2
 
 | 请求地址 | 请求方式 |
 | --- | --- |
-| /api/friend/get_friend_nick | GET |
+| /api/friend/get_friend_nick | GET/POST |
 
 
 |参数|类型|描述|

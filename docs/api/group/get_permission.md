@@ -9,7 +9,7 @@ sidebar_position: 2
 
 | 请求地址 | 请求方式 |
 | --- | --- |
-| /api/group/get_permission | GET |
+| /api/group/get_permission | GET/POST |
 
 
 |参数|类型|描述|

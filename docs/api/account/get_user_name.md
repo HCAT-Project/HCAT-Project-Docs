@@ -10,7 +10,7 @@ sidebar_position: 2
 
 | 请求地址                       | 请求方式 |
 |----------------------------|------|
-| /api/account/get_user_name | GET  |
+| /api/account/get_user_name | GET/POST  |
 
 | 参数        | 类型               | 描述            |
 |-----------|------------------|---------------|

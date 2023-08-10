@@ -9,7 +9,7 @@ sidebar_position: 2
 
 | 请求地址 | 请求方式 |
 | --- | --- |
-| /api/chat/send_friend_msg | GET |
+| /api/chat/send_friend_msg | GET/POST |
 
 
 |参数|类型|描述|

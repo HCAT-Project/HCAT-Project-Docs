@@ -11,7 +11,7 @@ sidebar_position: 2
 
 | 请求地址 | 请求方式 |
 | --- | --- |
-| /api/account/get_todo_list | GET |
+| /api/account/get_todo_list | GET/POST |
 
 
 |参数|类型|描述|

@@ -9,7 +9,7 @@ sidebar_position: 2
 
 | 请求地址 | 请求方式 |
 | --- | --- |
-| /api/group/change_user_nick | GET |
+| /api/group/change_user_nick | GET/POST |
 
 
 |参数|类型|描述|

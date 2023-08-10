@@ -9,7 +9,7 @@ sidebar_position: 2
 
 | 请求地址 | 请求方式 |
 | --- | --- |
-| /api/group/remove_admin | GET |
+| /api/group/remove_admin | GET/POST |
 
 
 |参数|类型|描述|

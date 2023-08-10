@@ -7,7 +7,7 @@ sidebar_position: 2
 
 | 请求地址 | 请求方式 |
 | --- | --- |
-| /api/account/login | GET |
+| /api/account/login | GET/POST |
 
 
 |参数|类型|描述|

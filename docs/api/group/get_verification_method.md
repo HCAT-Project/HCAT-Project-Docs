@@ -9,7 +9,7 @@ sidebar_position: 2
 
 | 请求地址 | 请求方式 |
 | --- | --- |
-| /api/group/get_verification_method | GET |
+| /api/group/get_verification_method | GET/POST |
 
 
 |参数|类型|描述|
