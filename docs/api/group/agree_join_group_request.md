@@ -16,7 +16,7 @@ sidebar_position: 2
 
 | 参数        | 类型               | 描述            |
 |-----------|------------------|---------------|
-| rid       | String           | 请求ID          |
+| rid       | String           | 事件随机ID        |
 | auth_data | \[Cookie\]String | 存在\[饼干\]里面的数据 |
 
 | 返回参数    | 类型     | 描述    |
