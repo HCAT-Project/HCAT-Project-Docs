@@ -1,5 +1,5 @@
 ---
-slug: 勉强能用（？）
+slug: 勉强能用（?）
 title: HCAT 8.12 更新进展
 authors: [ hsn8086 ]
 tags: [ log ]
