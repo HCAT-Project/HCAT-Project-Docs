@@ -1,5 +1,5 @@
 ---
-slug: 8月13_后端更新进展
+slug: 8月12_后端更新进展
 title: HCAT 8.12 更新进展
 authors: [ hsn8086 ]
 tags: [ log ]
