@@ -5,6 +5,9 @@ title: 开发指南【ZH-HANS】
 <!-- TOC -->
 
 * [前言](#前言)
+* [服务器的运行](#服务器的运行)
+    * [请求概述](#请求概述)
+    * [启动概述](#启动概述)
 * [服务器事件](#服务器事件)
     * [描述](#描述)
     * [基事件](#基事件)
@@ -18,17 +21,17 @@ title: 开发指南【ZH-HANS】
     * [继承](#继承)
     * [属性](#属性-1)
     * [方法](#方法-1)
-        * [__init__(self, user_id, password, user_name)](#init--self-userid-password-username-)
+        * [__init__(self, user_id, password, user_name)](#initself-userid-password-username)
             * [参数](#参数)
-        * [_var_init(self)](#-varinit--self-)
-        * [change_password(self, password)](#changepassword--self-password-)
+        * [_var_init(self)](#varinitself)
+        * [change_password(self, password)](#changepasswordself-password)
             * [参数](#参数-1)
-        * [auth(self, password)](#auth--self-password-)
+        * [auth(self, password)](#authself-password)
             * [参数](#参数-2)
             * [返回值](#返回值)
-        * [add_user_event(self, ec: EventContainer)](#adduserevent--self-ec--eventcontainer-)
+        * [add_user_event(self, ec: EventContainer)](#addusereventself-ec-eventcontainer)
             * [参数](#参数-3)
-        * [auth_token(self, token)](#authtoken--self-token-)
+        * [auth_token(self, token)](#authtokenself-token)
             * [参数](#参数-4)
             * [返回值](#返回值-1)
     * [使用示例](#使用示例)
@@ -37,12 +40,12 @@ title: 开发指南【ZH-HANS】
     * [继承](#继承-1)
     * [属性](#属性-2)
     * [方法](#方法-2)
-        * [__init__(self, group_id)](#init--self-groupid-)
+        * [__init__(self, group_id)](#initself-groupid)
             * [参数](#参数-5)
-        * [_var_init(self)](#-varinit--self--1)
-        * [broadcast(self, server, user_id, ec)](#broadcast--self-server-userid-ec-)
+        * [_var_init(self)](#varinitself-1)
+        * [broadcast(self, server, user_id, ec)](#broadcastself-server-userid-ec)
             * [参数](#参数-6)
-        * [permission_match(self, username, permission=Permission_ADMIN)](#permissionmatch--self-username-permissionpermissionadmin-)
+        * [permission_match(self, username, permission=Permission_ADMIN)](#permissionmatchself-username-permissionpermissionadmin)
             * [参数](#参数-7)
             * [返回值](#返回值-2)
     * [使用示例](#使用示例-1)
@@ -50,23 +53,71 @@ title: 开发指南【ZH-HANS】
     * [描述](#描述-3)
     * [属性](#属性-3)
     * [方法](#方法-3)
-        * [__init__(self, data_base: RPDB)](#init--self-database--rpdb-)
+        * [__init__(self, data_base: RPDB)](#initself-database-rpdb)
             * [参数](#参数-8)
-        * [__call__(self, key, value)](#call--self-key-value-)
+        * [__call__(self, key, value)](#callself-key-value)
             * [参数](#参数-9)
-        * [write_in(self)](#writein--self-)
-        * [add(self, key, value)](#add--self-key-value-)
+        * [write_in(self)](#writeinself)
+        * [add(self, key, value)](#addself-key-value)
             * [参数](#参数-10)
             * [返回值](#返回值-3)
-    * [使用示例:](#使用示例-)
+    * [使用示例:](#使用示例-2)
 
 <!-- TOC -->
 
 # 前言
 
 在1.x版本的服务器中,我们已经意识到直接读写数据库会带来一些不可预见的问题,同时也发现了由于不完善的数据库模块所导致的逻辑混乱.因此,在假期期间,我们对服务器进行了重新编写,并优化了数据库模块,以期提供更好的开发体验.
+> 喂醒醒,你家数据库都变成DBAdapter了!!! --hsn
 
 这次重写的主要目的是为了优化开发流程,减少部分繁琐的重复操作,提高开发效率.但是,考虑到插件系统的开发并不是必要的,而且会增加日常开发的难度,我们决定将其删除.
+> 放心,加回来了.
+
+# 服务器的运行
+
+在开发之前,当然要了解服务器的运行方式啦.
+
+HCAT服务器是以事件为核心的,每个事件都是一个类,并且都继承自`BaseEvent`类,这样做的好处是可以将事件的逻辑与服务器的逻辑分离,使得服务器的逻辑更加清晰.
+
+## 请求概述
+
+请求的大概运行流程如下:
+
+1. 来自用户的请求通过开放的端口被请求接收器接收.
+2. 请求接收器通过从
+   [`BaseReceiver`]
+   类继承的`create_req`调用[`Server`](https://github.com/HCAT-Project/re_hcat-server/blob/master/src/server.py)
+   类的`request_handler`方法.
+
+   > 啊当然啦,期间还会通过[`ServerManager`].
+3. 服务器接收到请求,通过[`EventManager`]的`create_event`方法创建[`RecvEvent`]事件.
+4. [`RecvEvent`]事件通过[`DynamicObjLoader`]加载(或获取已加载的事件).
+5. 事件返回结果.
+
+至此,服务器就结束了一次请求的处理啦.
+
+## 启动概述
+
+服务器的启动流程如下:
+
+1. [`start.py`]尝试启动[`main.py`].若失败,进入异常处理(如依赖安装).
+2. [`main.py`]通过`argparse`模块获取启动参数.
+3. 设置日志.
+4. 克隆客户端仓库.
+5. 初始化[`DynamicObjLoader`]和[`PluginManager`].
+6. 初始化[`ServerManager`].
+    1. 加载插件
+    2. ~~服务器,启动!~~
+        1. 加载配置文件.
+        2. 创建AES密钥.
+        3. 初始化[`EventManager`].
+        4. 加载数据库.
+        5. 初始化[`FileManager`].
+        6. 加载`auxiliary_event`.
+        7. 启动`scheduler`.
+    3. 加载`receiver`.
+
+至此,启动完成.
 
 # 服务器事件
 
@@ -83,7 +134,7 @@ title: 开发指南【ZH-HANS】
 `BaseEvent`类有以下属性:
 
 - `auth`: 表示事件是否需要认证,默认为启用验证.
-- `req`: `Flask`框架默认使用的请求对象.
+- `req`: 请求对象.
 - `server`: 实例化的服务器类.
 - `path`: 用户请求时的路径.
 - `e_mgr`: 事件管理器,用于运行事件.
@@ -95,6 +146,16 @@ title: 开发指南【ZH-HANS】
 
 - `run()`: 运行事件,检查请求参数的完整性,并运行`_run`函数处理逻辑.
 - `_run()`: 具体的事件处理逻辑实现.
+
+## 事件的运行流程
+
+1. [`EventManager`]的`create_event`方法被调用.
+2. 运行`auxiliary_event`.
+2. 验证.
+3. 进入`run`方法.
+4. 获取语言.
+5. 检查参数完整性.
+6. 运行`_run`方法.
 
 ## 事件的创建
 
@@ -139,12 +200,15 @@ User类继承自Jelly类.
 
 ## 属性
 
-- `todo_list`: 待办事项列表,类型为列表
-- `token`: 用户令牌,类型为字符串
-- `status`: 用户状态,类型为字符串
-- `friend_dict`: 用户的好友字典,类型为字典
-- `groups_dict`: 用户的群组字典,类型为字典
-- `e_mail_auth`: 是否已完成邮箱认证,类型为布尔值
+- `todo_list`: 待办事项列表,类型为`list`.
+- `token`: 用户令牌,类型为`str`.
+- `status`: 用户状态,类型为`str`.
+- `friend_dict`: 用户的好友字典,类型为`dict`.
+- `groups_dict`: 用户的群组字典,类型为`dict`.
+- `email`: 用户邮箱,类型为`str`.
+- `language`: 用户语言,类型为`str`.
+- `avatar`: 用户头像哈希,类型为`str`.
+- `bio`: 用户个人简介,类型为`str`.
 
 ## 方法
 
@@ -154,9 +218,9 @@ User类继承自Jelly类.
 
 #### 参数
 
-- `user_id`: str类型,用户ID
-- `password`: str类型,用户密码
-- `user_name`: str类型,用户名
+- `user_id`: `str`,用户ID.
+- `password`: `str`,用户密码.
+- `user_name`: `str`,用户名.
 
 ### _var_init(self)
 
@@ -261,14 +325,14 @@ Group类继承自Jelly类.
 
 ## 属性
 
-- `id`: 群组ID,类型为字符串
-- `name`: 群组名称,类型为字符串
-- `member_dict`: 群组成员字典,类型为字典,key为用户ID,value为用户对象
-- `owner`: 群主用户id,类型为字符串
-- `admin_list`: 管理员用户id集合,类型为集合
-- `member_settings`: 成员设置字典,类型为字典,key为用户ID,value为成员设置对象
-- `ban_dict`: 封禁成员字典,类型为字典,key为用户ID,value为封禁对象
-- `group_settings`: 群组设置字典,类型为字典,包含验证方式,问题,答案等设置
+- `id`: 群组ID,类型为`str`
+- `name`: 群组名称,类型为`str`
+- `member_dict`: 群组成员字典,类型为`dict`,key为用户ID,value为用户对象
+- `owner`: 群主用户id,类型为`str`
+- `admin_list`: 管理员用户id集合,类型为`set`
+- `member_settings`: 成员设置字典,类型为`dict`,key为用户ID,value为成员设置对象
+- `ban_dict`: 封禁成员字典,类型为`dict`,key为用户ID,value为封禁对象
+- `group_settings`: 群组设置字典,类型为`dict`,包含验证方式,问题,答案等设置
 
 ## 方法
 
@@ -434,3 +498,27 @@ user.add_user_event(ec)
 ```
 
 这样,我们就成功地记录了用户发送的消息,并将其添加到了用户的待办事项列表中。
+
+[`BaseReceiver`]:https://github.com/HCAT-Project/re_hcat-server/blob/master/src/request_receiver/base_receiver.py
+
+[`Server`]:https://github.com/HCAT-Project/re_hcat-server/blob/master/src/server.py
+
+[`ServerManager`]:https://github.com/HCAT-Project/re_hcat-server/blob/master/src/server_manager.py
+
+[`EventManager`]:https://github.com/HCAT-Project/re_hcat-server/blob/master/src/event/event_manager.py
+
+[`RecvEvent`]:https://github.com/HCAT-Project/re_hcat-server/blob/master/src/event/recv_event.py
+
+[`DynamicObjLoader`]:https://github.com/HCAT-Project/re_hcat-server/blob/master/src/dynamic_obj_loader.py
+
+[`start.py`]:https://github.com/HCAT-Project/re_hcat-server/blob/master/start.py
+
+[`main.py`]:https://github.com/HCAT-Project/re_hcat-server/blob/master/src/main.py
+
+[`PluginManager`]:https://github.com/HCAT-Project/re_hcat-server/blob/master/src/plugin_manager.py
+
+[`FileManager`]:https://github.com/HCAT-Project/re_hcat-server/blob/master/src/util/file_manager.py
+
+<!--
+hsn: 更新文档好累啊啊啊啊啊!!!
+-->
